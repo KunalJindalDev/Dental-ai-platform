@@ -106,7 +106,26 @@
   border-radius: 8px;
   color: #cbd5e1;
   font-size: 0.9rem;
-  overflow-wrap: break-word; /* Prevents text overflow */
+  
+  /* --- NEW SCROLLING RULES --- */
+  height: 150px;       /* Fixed height for every box */
+  overflow-y: auto;    /* Scrollbar appears if text is too long */
+  
+  /* Optional: Make the scrollbar look nice (thin & dark) */
+  scrollbar-width: thin; 
+  scrollbar-color: #475569 #1e293b;
+}
+
+/* Webkit Scrollbar Styling (for Chrome/Safari) */
+.model-card::-webkit-scrollbar {
+  width: 6px;
+}
+.model-card::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+.model-card::-webkit-scrollbar-thumb {
+  background-color: #475569;
+  border-radius: 10px;
 }
 
 .model-card strong {
