@@ -1,0 +1,9 @@
+flask
+flask-cors
+python-dotenv
+ultralytics
+pillow
+openai
+google-generativeai
+groq
+anthropic
