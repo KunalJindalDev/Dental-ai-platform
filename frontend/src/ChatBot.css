@@ -1,0 +1,137 @@
+/* Container & Toggle */
+.chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2000;
+  font-family: sans-serif;
+}
+
+.chat-toggle-btn {
+  background-color: #6366f1;
+  color: white;
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 28px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+.chat-toggle-btn:hover { transform: scale(1.1); }
+
+/* Main Window - Made WIDER for the grid */
+.chat-window {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  width: 600px; /* <--- Much wider now */
+  height: 500px;
+  background-color: #1e293b;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #334155;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Header */
+.chat-header {
+  background-color: #0f172a;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #334155;
+  color: #fff;
+}
+
+/* Messages Area */
+.chat-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #0f172a;
+}
+
+/* Simple Bubbles (User Text) */
+.message-row.user {
+  align-self: flex-end;
+}
+.simple-bubble {
+  background-color: #38bdf8;
+  color: #0f172a;
+  padding: 10px 15px;
+  border-radius: 10px;
+  max-width: 80%;
+  font-weight: 500;
+}
+
+/* THE GRID LAYOUT (2x2) */
+.model-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+}
+
+.model-card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+}
+
+.model-card strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #38bdf8;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Specific Border Colors for Models */
+.model-card.gpt { border-left: 3px solid #10a37f; }    /* OpenAI Green */
+.model-card.gemini { border-left: 3px solid #4285f4; } /* Google Blue */
+.model-card.llama { border-left: 3px solid #f97316; }  /* Meta/Groq Orange */
+.model-card.claude { border-left: 3px solid #d97757; } /* Anthropic Beige/Red */
+
+/* Input Area */
+.chat-input-area {
+  padding: 15px;
+  background-color: #1e293b;
+  display: flex;
+  gap: 10px;
+  border-top: 1px solid #334155;
+}
+.chat-input-area input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #475569;
+  background: #0f172a;
+  color: white;
+}
+.chat-input-area button {
+  background: #38bdf8;
+  border: none;
+  border-radius: 6px;
+  padding: 0 15px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.loading-indicator { color: #94a3b8; font-style: italic; font-size: 0.8rem; text-align: center; }
+
+/* Responsive: On mobile, stack them instead of 2x2 */
+@media (max-width: 650px) {
+  .chat-window { width: 90vw; right: 5vw; }
+  .model-grid { grid-template-columns: 1fr; }
+}
