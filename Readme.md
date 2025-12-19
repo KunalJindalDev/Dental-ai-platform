@@ -122,7 +122,7 @@ Client runs on http://localhost:3000
 
     Kunal Jindal 
     Berwin Chen (Lead Phd Student)
-    Dongkuan (DK) Xu (Principal Investigator)
+    Dr. Dongkuan (DK) Xu (Principal Investigator)
 
 ## 📜 License
 
