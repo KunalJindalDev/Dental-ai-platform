@@ -45,7 +45,7 @@ def call_gpt(prompt):
         response = openai_client.chat.completions.create(
             model="gpt-4o",
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=100
+            max_tokens=1000
         )
         return response.choices[0].message.content
     except Exception as e:
@@ -73,7 +73,7 @@ def call_claude(prompt):
     try:
         message = claude_client.messages.create(
             model="claude-opus-4-5-20251101",
-            max_tokens=100,
+            max_tokens=1000,
             messages=[{"role": "user", "content": prompt}]
         )
         return message.content[0].text
