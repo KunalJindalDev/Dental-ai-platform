@@ -192,7 +192,7 @@ function App() {
         <p>Developed for Dental AI Research • 2025</p>
         <p className="small">Powered by Ultralytics YOLO & React</p>
       </footer>
-      <ChatBot />
+      <ChatBot detectionContext={detections.length > 0 ? `The user just analyzed an X-ray and found ${detections.length} wisdom teeth.` : ""} />
     </div>
   );
 }

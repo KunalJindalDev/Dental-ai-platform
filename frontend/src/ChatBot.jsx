@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./ChatBot.css";
 
-const ChatBot = () => {
+const ChatBot = ({detectionContext}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     { type: "text", text: "Hello! I am connected to GPT-4o, Gemini, Llama 3, and Claude. Ask me anything!", sender: "bot" }
@@ -31,23 +31,33 @@ const ChatBot = () => {
     setInput("");
     setLoading(true);
 
+    // --- SMART CONTEXT INJECTION ---
+    // 1. Define keywords that trigger the X-ray context
+    const triggers = ["tooth", "teeth", "wisdom", "xray", "x-ray", "image", "detect", "see", "bad", "pain"];
+    
+    // 2. Check if the user's input contains any of them
+    const isRelevant = triggers.some(t => input.toLowerCase().includes(t));
+
+    // 3. Only attach context if relevant AND we have detections
+    let finalPrompt = input;
+    if (detectionContext && isRelevant) {
+      finalPrompt = `[Context: ${detectionContext}] Question: ${input}`;
+      console.log("Context injected!"); // For debugging
+    }
+
     try {
       const response = await fetch("http://127.0.0.1:5000/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: userMsg.text }),
+        body: JSON.stringify({ message: finalPrompt }),
       });
+
       const data = await response.json();
-
-      const botMsg = { 
-        type: "multi", 
-        models: data.responses, 
-        sender: "bot" 
-      };
+      const botMsg = { type: "multi", models: data.responses };
       setMessages((prev) => [...prev, botMsg]);
-
     } catch (error) {
-      setMessages((prev) => [...prev, { type: "text", text: "Error connecting to AI models.", sender: "bot" }]);
+      console.error("Error fetching response:", error);
+      setMessages((prev) => [...prev, { type: "text", text: "Error communicating with server.", sender: "bot" }]);
     } finally {
       setLoading(false);
     }

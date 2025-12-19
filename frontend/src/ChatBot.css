@@ -135,3 +135,11 @@
   .chat-window { width: 90vw; right: 5vw; }
   .model-grid { grid-template-columns: 1fr; }
 }
+
+/* Force text visibility */
+.model-card p {
+  color: #ffffff !important; /* Force White Text */
+  font-size: 0.9rem;
+  margin-top: 5px;
+  display: block;
+}

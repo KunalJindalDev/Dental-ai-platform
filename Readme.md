@@ -14,11 +14,11 @@
 
 ## 🧠 Project Overview
 
-[cite_start]**Dental AI Platform** is a dual-purpose AI application developed for the **Tiny Project (Dec 2025)** research initiative at **North Carolina State University** under **PI Dongkuan (DK) Xu**[cite: 1, 2].
+**Dental AI Platform** is a dual-purpose AI application developed for the **Tiny Project (Dec 2025)** research initiative at **North Carolina State University** under **PI Dr. Dongkuan (DK) Xu**.
 
-[cite_start]This platform addresses two core challenges in medical AI integration as specified in **Project 2**[cite: 7, 25]:
-1.  [cite_start]**Visual Diagnostics:** Automated detection of wisdom teeth in dental X-rays using computer vision.
-2.  [cite_start]**Multi-Model Reasoning:** A "Quad-Chat" interface that queries **GPT-4o**, **Gemini**, **Llama 3**, and **Claude 3.5** simultaneously to compare diverse AI perspectives on dental queries.
+This platform addresses two core challenges in medical AI integration as specified in **Project 2**:
+1.  **Visual Diagnostics:** Automated detection of wisdom teeth in dental X-rays using computer vision.
+2.  **Multi-Model Reasoning:** A "Quad-Chat" interface that queries **GPT**, **Gemini**, **Groq**, and **Claude** simultaneously to compare diverse AI perspectives on dental queries.
 
 ---
 
@@ -37,14 +37,13 @@
 ## 🧩 Core Features
 
 ### 1. Wisdom Tooth Detection (Vision)
-- [cite_start]**Custom Trained Model:** Utilizes YOLOv8 trained on annotated dental X-rays to identify wisdom teeth areas.
-- [cite_start]**Real-time Inference:** Users upload an X-ray, and the system outputs the image with the wisdom area highlighted.
+- **Custom Trained Model:** Utilizes YOLOv8 trained on annotated dental X-rays to identify wisdom teeth areas.
+- **Real-time Inference:** Users upload an X-ray, and the system outputs the image with the wisdom area highlighted.
 - **Visual Feedback:** Color-coded bounding boxes drawn dynamically over the user's image via HTML5 Canvas.
 
 ### 2. Multi-LLM Arena (Chatbot)
-- [cite_start]**Parallel Processing:** Uses Python `ThreadPoolExecutor` to query 4 distinct foundation models at the same time.
-- [cite_start]**Model Comparison:** Displays responses from **GPT-4o**, **Gemini**, **Llama 3**, and **Claude 3.5** in a comparative grid[cite: 33, 34, 37].
-- **Robust Error Handling:** Includes fallback mechanisms to ensure continuous operation even if one API is rate-limited.
+- **Parallel Processing:** Uses Python `ThreadPoolExecutor` to query 4 distinct foundation models at the same time.
+- **Model Comparison:** Displays responses from **GPT**, **Gemini**, **Groq**, and **Claude** in a comparative grid.
 
 ---
 
