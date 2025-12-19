@@ -20,7 +20,7 @@ This platform addresses two core challenges in medical AI integration as specifi
 1.  **Visual Diagnostics:** Automated detection of wisdom teeth in dental X-rays using computer vision.
 2.  **Multi-Model Reasoning:** A "Quad-Chat" interface that queries **GPT**, **Gemini**, **Groq**, and **Claude** simultaneously to compare diverse AI perspectives on dental queries.
 
----
+
 
 ## ⚙️ Tech Stack
 
@@ -32,7 +32,7 @@ This platform addresses two core challenges in medical AI integration as specifi
 | **LLM Engine** | OpenAI, Google GenAI, Groq, Anthropic | Parallel threading for multi-model inference |
 | **Tools** | Roboflow, Git, npm | Data annotation, version control, package management |
 
----
+
 
 ## 🧩 Core Features
 
@@ -44,8 +44,6 @@ This platform addresses two core challenges in medical AI integration as specifi
 ### 2. Multi-LLM Arena (Chatbot)
 - **Parallel Processing:** Uses Python `ThreadPoolExecutor` to query 4 distinct foundation models at the same time.
 - **Model Comparison:** Displays responses from **GPT**, **Gemini**, **Groq**, and **Claude** in a comparative grid.
-
----
 
 ## 🧱 Architecture
 
@@ -73,9 +71,19 @@ Dental-Platform/
 └── README.md                  # Project Documentation
 ```
 
----
+## 🔑 Configuration
+
+1. Create a file named `.env` in the `backend/` folder.
+2. Add your API keys in this format:
+   ```ini
+   GEMINI_KEY=your_key_here
+   GROQ_KEY=your_key_here
+   OPENAI_KEY=your_key_here
+   CLAUDE_KEY=your_key_here
+
 
 ## 🚀 Installation & Usage
+
 Prerequisites
 
     Python 3.10+
@@ -126,3 +134,4 @@ Client runs on http://localhost:3000
 ## 📜 License
 
 This project is submitted for the NCSU Tiny Project Research Initiative. Distributed under the MIT License.
+
