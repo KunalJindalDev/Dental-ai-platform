@@ -7,7 +7,7 @@
 ![GPT](https://img.shields.io/badge/LLM-GPT-000000?logo=openai&logoColor=white)
 ![Gemini](https://img.shields.io/badge/LLM-Gemini-1A73E8?logo=google&logoColor=white)
 ![Claude](https://img.shields.io/badge/LLM-Claude-FF6F00?logo=anthropic&logoColor=white)
-![Groq](https://img.shields.io/badge/LLM-Groq-00B3A4?logo=groq&logoColor=white)
+![Groq](https://img.shields.io/badge/LLM-Llama--3_(Groq)-F55036?logo=groq&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
 ---
