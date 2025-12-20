@@ -33,7 +33,7 @@ const ChatBot = ({ detectionContext }) => {
     setInput("");
     setLoading(true);
 
-    const triggers = ["tooth", "teeth", "wisdom", "xray", "x-ray", "image", "detect", "see", "bad", "pain"];
+    const triggers = ["tooth", "teeth", "wisdom", "xray", "x-ray", "image", "detect", "see", "bad", "pain", "them", "they", "it", "that", "those", "these", ];
     const isRelevant = triggers.some(t => input.toLowerCase().includes(t));
 
     let finalPrompt = input;

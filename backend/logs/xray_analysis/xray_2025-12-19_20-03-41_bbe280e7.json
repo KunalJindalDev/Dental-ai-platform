@@ -1,0 +1,21 @@
+{
+    "log_id": "bbe280e7",
+    "timestamp": "2025-12-19T20:03:41.381671",
+    "file_analyzed": "27.jpg",
+    "inference_speed_ms": 478.4982999844942,
+    "findings": {
+        "total_teeth_detected": 1,
+        "raw_boxes": [
+            {
+                "label": "Wisdom teeth",
+                "confidence": 0.7335023283958435,
+                "bbox": [
+                    408.35870361328125,
+                    261.65460205078125,
+                    444.44500732421875,
+                    360.40142822265625
+                ]
+            }
+        ]
+    }
+}

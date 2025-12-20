@@ -78,27 +78,37 @@ function App() {
     ctx.fillStyle = "#00FF00";
 
     detections.forEach((det) => {
-      const [x1, y1, x2, y2] = det.bbox;
-      const rectX = x1 * scaleX;
-      const rectY = y1 * scaleY;
-      const rectW = (x2 - x1) * scaleX;
-      const rectH = (y2 - y1) * scaleY;
+    const [x1, y1, x2, y2] = det.bbox;
+    const rectX = x1 * scaleX;
+    const rectY = y1 * scaleY;
+    const rectW = (x2 - x1) * scaleX;
+    const rectH = (y2 - y1) * scaleY;
 
-      ctx.strokeRect(rectX, rectY, rectW, rectH);
-      
-      // Background for text to make it readable
-      const text = `${det.label} ${Math.round(det.confidence * 100)}%`;
-      const textWidth = ctx.measureText(text).width;
-      
-      ctx.fillStyle = "rgba(0, 255, 0, 0.2)"; // Semi-transparent fill
-      ctx.fillRect(rectX, rectY, rectW, rectH);
-      
-      ctx.fillStyle = "black";
-      ctx.fillRect(rectX, rectY - 25, textWidth + 10, 25);
-      
-      ctx.fillStyle = "#00FF00";
-      ctx.fillText(text, rectX + 5, rectY - 7);
-    });
+    // 1. Draw the Box
+    ctx.strokeRect(rectX, rectY, rectW, rectH);
+
+    // 2. Draw the Semi-transparent Fill
+    ctx.fillStyle = "rgba(0, 255, 0, 0.2)";
+    ctx.fillRect(rectX, rectY, rectW, rectH);
+
+    // --- SMART TEXT LOGIC ---
+    const text = `${det.label} ${Math.round(det.confidence * 100)}%`;
+    const textWidth = ctx.measureText(text).width;
+    const textHeight = 25; 
+
+    const textY = rectY > 25 ? rectY - 25 : rectY; 
+
+    const textX = (rectX + textWidth > canvas.width) ? (canvas.width - textWidth - 5) : rectX;
+
+    // 3. Draw Label Background
+    ctx.fillStyle = "black";
+    ctx.fillRect(textX, textY, textWidth + 10, textHeight);
+
+    // 4. Draw Text
+    ctx.fillStyle = "#00FF00";
+    const textOffsetY = rectY > 25 ? -7 : 18; 
+    ctx.fillText(text, textX + 5, textY + 18);
+   });
   };
 
   return (
