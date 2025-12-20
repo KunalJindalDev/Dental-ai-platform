@@ -12,9 +12,9 @@ ds = load_dataset(
     split="train"
 ).cast_column("image", Image())  
 
-# 3. Save first 80 images
-print(">>> Saving first 80 images...")
-for i in range(80):
+# 3. Save first 150 images
+print(">>> Saving first 150 images...")
+for i in range(150):
     img = ds[i]["image"]         
     img.save(os.path.join(save_dir, f"{i}.jpg"))
 
