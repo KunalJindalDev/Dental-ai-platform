@@ -7,7 +7,7 @@
 ---
 
 ## Overview
-This document records the specific ways AI tools (ChatGPT-4o, GitHub Copilot, and Claude 3.5 Sonnet) were utilized to accelerate development, bridge domain knowledge gaps, and optimize system architecture.
+This document records the specific ways AI tools (ChatGPT-5.1 and GitHub Copilot) were utilized to accelerate development, bridge domain knowledge gaps, and optimize system architecture.
 
 The usage is categorized into three phases: **Domain Research**, **Full-Stack Acceleration**, and **System Optimization**.
 
@@ -18,8 +18,8 @@ The usage is categorized into three phases: **Domain Research**, **Full-Stack Ac
 
 | Tool | Intent | Prompt / Methodology | Outcome |
 | :--- | :--- | :--- | :--- |
-| **ChatGPT-4o** | **Domain Tutor** | *"I am building a computer vision dataset for wisdom teeth. Explain the visual markers on a panoramic X-ray (OPG) that distinguish a wisdom tooth from a molar. How do I count them?"* | The AI explained the "Palmer Notation" and the visual cue of counting from the midline. It helped me establish a strict labeling protocol (e.g., "Look for root angulation") which I applied in Roboflow. |
-| **ChatGPT-4o** | **Visual QA** | *[Uploaded a blurry sample X-ray]* *"Is there wisdom tooth in this image?"* | It pointed out the "bone coverage" over the distal part of the tooth, helping me classify it correctly as "Impacted." |
+| **ChatGPT-5.1** | **Domain Tutor** | *"I am building a computer vision dataset for wisdom teeth. Explain the visual markers on a panoramic X-ray (OPG) that distinguish a wisdom tooth from a molar. How do I count them?"* | The AI explained the "Palmer Notation" and the visual cue of counting from the midline. It helped me establish a strict labeling protocol (e.g., "Look for root angulation") which I applied in Roboflow. |
+| **ChatGPT-5.1** | **Visual QA** | *[Uploaded a blurry sample X-ray]* *"Is there wisdom tooth in this image?"* | It pointed out the "bone coverage" over the distal part of the tooth, helping me classify it correctly as "Impacted." |
 
 ---
 
@@ -35,8 +35,8 @@ The usage is categorized into three phases: **Domain Research**, **Full-Stack Ac
 
 | Tool | Intent | Prompt / Methodology | Outcome |
 | :--- | :--- | :--- | :--- |
-| **ChatGPT-4o** | **Debugging** | *"I am getting a 429 Resource Exhausted error from the Gemini API during my loop. How do I handle this gracefully without crashing the other 3 threads?"* | Provided the `try/except` block logic to catch specific API errors and return a "Rate Limit Reached" string instead of a 500 Server Error. |
-| **ChatGPT-4o** | **Debugging** | *"The detection bounding boxes are misaligned when the browser window resizes, and the chat overlay is clipping text. Fix the position: absolute calculations and Z-index layering."* | Automatically identified a conflict between the Canvas scaling logic and the CSS container. It provided a corrected Flexbox structure that ensured the overlay stayed perfectly aligned with the video feed on all screen sizes. |
+| **ChatGPT-5.1** | **Debugging** | *"I am getting a 429 Resource Exhausted error from the Gemini API during my loop. How do I handle this gracefully without crashing the other 3 threads?"* | Provided the `try/except` block logic to catch specific API errors and return a "Rate Limit Reached" string instead of a 500 Server Error. |
+| **ChatGPT-5.1** | **Debugging** | *"The detection bounding boxes are misaligned when the browser window resizes, and the chat overlay is clipping text. Fix the position: absolute calculations and Z-index layering."* | Automatically identified a conflict between the Canvas scaling logic and the CSS container. It provided a corrected Flexbox structure that ensured the overlay stayed perfectly aligned with the video feed on all screen sizes. |
 
 ---
 
