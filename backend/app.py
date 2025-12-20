@@ -6,6 +6,10 @@ from ultralytics import YOLO
 from PIL import Image
 import io
 import concurrent.futures
+import time
+import uuid
+import json
+from datetime import datetime
 
 # Import AI Clients
 import google.generativeai as genai
@@ -107,6 +111,8 @@ def detect_teeth():
                 'bbox': [x1, y1, x2, y2]
             })
 
+    log_xray_event(file.filename, detections, results[0].speed['inference'])
+
     return jsonify({
         'message': 'Success', 
         'count': len(detections),
@@ -133,10 +139,72 @@ def chat():
             "claude": future_claude.result()
         }
 
+    log_chat_event(user_message, responses)
+
     return jsonify({
         'type': 'multi_model',
         'responses': responses
     })
+
+# --- LOGGING SYSTEM CONFIGURATION ---
+BASE_LOG_DIR = "logs"
+XRAY_LOG_DIR = os.path.join(BASE_LOG_DIR, "xray_analysis")
+CHAT_LOG_DIR = os.path.join(BASE_LOG_DIR, "chat_history")
+
+def ensure_log_dirs():
+    """Creates the necessary folder structure: logs/xray_analysis & logs/chat_history"""
+    os.makedirs(XRAY_LOG_DIR, exist_ok=True)
+    os.makedirs(CHAT_LOG_DIR, exist_ok=True)
+
+def log_xray_event(filename, detections, inference_speed):
+    """Saves a detailed JSON log for every X-ray analyzed."""
+    ensure_log_dirs()
+    
+    log_id = str(uuid.uuid4())[:8] # Short unique ID
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    
+    log_data = {
+        "log_id": log_id,
+        "timestamp": datetime.now().isoformat(),
+        "file_analyzed": filename,
+        "inference_speed_ms": inference_speed,
+        "findings": {
+            "total_teeth_detected": len(detections),
+            "raw_boxes": detections # Saves the exact coordinates
+        }
+    }
+    
+    # Save as: logs/xray_analysis/xray_2025-12-19_10-30-05_a1b2c3d4.json
+    log_filename = f"xray_{timestamp}_{log_id}.json"
+    save_path = os.path.join(XRAY_LOG_DIR, log_filename)
+    
+    with open(save_path, "w") as f:
+        json.dump(log_data, f, indent=4)
+    print(f"📝 [LOG] X-ray Analysis saved to {log_filename}")
+
+def log_chat_event(user_prompt, responses_dict):
+    """Saves the User Prompt + All 4 AI Responses in a single JSON file."""
+    ensure_log_dirs()
+    
+    log_id = str(uuid.uuid4())[:8]
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    
+    log_data = {
+        "log_id": log_id,
+        "timestamp": datetime.now().isoformat(),
+        "interaction": {
+            "user_prompt": user_prompt,
+            "ai_responses": responses_dict # Stores Gemini, GPT, Claude, Groq responses
+        }
+    }
+    
+    # Save as: logs/chat_history/chat_2025-12-19_10-30-05_a1b2c3d4.json
+    log_filename = f"chat_{timestamp}_{log_id}.json"
+    save_path = os.path.join(CHAT_LOG_DIR, log_filename)
+    
+    with open(save_path, "w") as f:
+        json.dump(log_data, f, indent=4)
+    print(f"📝 [LOG] Chat Interaction saved to {log_filename}")
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
