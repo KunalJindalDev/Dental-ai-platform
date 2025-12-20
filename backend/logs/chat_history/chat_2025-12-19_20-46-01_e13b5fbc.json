@@ -1,0 +1,13 @@
+{
+    "log_id": "e13b5fbc",
+    "timestamp": "2025-12-19T20:46:01.590357",
+    "interaction": {
+        "user_prompt": "HI! how are you?",
+        "ai_responses": {
+            "gpt4": "Hello! I'm just a program, so I don't have feelings, but I'm here and ready to help you. How can I assist you today?",
+            "gemini": "I'm doing great, thank you for asking! How are you doing today?",
+            "llama": "I'm just a language model, so I don't have feelings in the same way that humans do, but I'm here to help you and I'm functioning properly. It's great to chat with you, though. How about you? How's your day going?",
+            "claude": "Hi there! I'm doing well, thanks for asking. How are you doing today? Is there anything I can help you with?"
+        }
+    }
+}
