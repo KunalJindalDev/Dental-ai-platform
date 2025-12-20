@@ -14,7 +14,7 @@
 
 ## 🧠 Project Overview
 
-**Dental AI Platform** is a dual-purpose AI application developed for the **Tiny Project (Dec 2025)** research initiative at **North Carolina State University** under **PI Dr. Dongkuan (DK) Xu**.
+**Dental AI Platform** is a dual-purpose AI application developed for the **Tiny Project (Dec 2025)** research initiative at **North Carolina State University** under **PI: Dr. Dongkuan (DK) Xu**.
 
 This platform addresses two core challenges in medical AI integration as specified in **Project 2**:
 1.  **Visual Diagnostics:** Automated detection of wisdom teeth in dental X-rays using computer vision.
@@ -68,6 +68,7 @@ Dental-Platform/
 │   └── download_raw.py        # Dataset Fetcher
 ├── .gitignore                 # Security exclusions
 ├── LICENSE
+├── AI.md
 └── README.md                  # Project Documentation
 ```
 
