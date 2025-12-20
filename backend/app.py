@@ -10,6 +10,7 @@ import time
 import uuid
 import json
 from datetime import datetime
+# pyright: reportPrivateImportUsage=false
 
 # Import AI Clients
 import google.generativeai as genai
@@ -121,7 +122,7 @@ def detect_teeth():
 
 @app.route('/chat', methods=['POST'])
 def chat():
-    data = request.json
+    data = request.get_json(silent=True) or {}
     user_message = data.get('message', '')
     
     # Use ThreadPoolExecutor to run all 4 AI calls AT THE SAME TIME
